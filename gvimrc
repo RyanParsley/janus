@@ -1,4 +1,16 @@
 if has("gui_macvim")
+
+
+autocmd BufRead *\.txt setlocal wrap
+autocmd BufRead *\.txt setlocal formatoptions=l
+autocmd BufRead *\.txt setlocal lbr
+autocmd BufRead *\.txt map  j gj
+autocmd BufRead *\.txt  map  k gk
+autocmd BufRead *\.txt setlocal smartindent
+autocmd BufRead *\.txt setlocal spell spelllang=en_us
+
+
+
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 

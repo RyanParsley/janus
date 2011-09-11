@@ -15,6 +15,15 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
+autocmd BufRead *\.txt setlocal wrap
+autocmd BufRead *\.txt setlocal formatoptions=l
+autocmd BufRead *\.txt setlocal lbr
+autocmd BufRead *\.txt map  j gj
+autocmd BufRead *\.txt  map  k gk
+autocmd BufRead *\.txt setlocal smartindent
+autocmd BufRead *\.txt setlocal spell spelllang=en_us
+
+
 " Searching
 set hlsearch
 set incsearch
@@ -147,3 +156,16 @@ set showcmd
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+" Drupal stuff
+if has("autocmd")
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.module set filetype=php
+    autocmd BufRead,BufNewFile *.install set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.inc set filetype=php
+    autocmd BufRead,BufNewFile *.view set filetype=php
+  augroup END
+endif
+syntax on

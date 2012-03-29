@@ -15,14 +15,15 @@ set softtabstop=2
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
-autocmd BufRead *\.txt setlocal wrap
-autocmd BufRead *\.txt setlocal formatoptions=l
-autocmd BufRead *\.txt setlocal lbr
-autocmd BufRead *\.txt map  j gj
-autocmd BufRead *\.txt  map  k gk
-autocmd BufRead *\.txt setlocal smartindent
-autocmd BufRead *\.txt setlocal spell spelllang=en_us
-
+autocmd BufRead *\.txt,*\.md setlocal wrap
+autocmd BufRead *\.txt,*\.md setlocal formatoptions=l
+autocmd BufRead *\.txt,*\.md setlocal lbr
+autocmd BufRead *\.txt,*\.md map  j gj
+autocmd BufRead *\.txt,*\.md  map  k gk
+autocmd BufRead *\.txt,*\.md setlocal smartindent
+autocmd BufRead *\.txt,*\.md setlocal spell spelllang=en_us
+autocmd BufRead *\.txt,*\.md setlocal wrapmargin=0
+autocmd BufRead *\.txt,*\.md setlocal textwidth=0
 
 " Searching
 set hlsearch
@@ -156,7 +157,8 @@ set showcmd
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
+" Markdown to HTML
+nmap <leader>md :%!/usr/local/bin/Markdown.pl <cr>
 " Drupal stuff
 if has("autocmd")
   " Drupal *.module and *.install files.
